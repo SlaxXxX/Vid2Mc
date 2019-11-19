@@ -41,16 +41,17 @@ namespace Vid2Mc {
 
 	private:
 		MediaManager* mediaManager = new MediaManager;
-		Process* process = new Process;
+	private: System::Windows::Forms::Label^  infoPanel;
+			 Process* process = new Process;
 
-		void update() {
-			pixel_w->Text = "" + mediaManager->getProp(pixel_w->Name);
-			pixel_h->Text = "" + mediaManager->getProp(pixel_h->Name);
-			block_w->Text = "" + mediaManager->getProp(block_w->Name);
-			block_h->Text = "" + mediaManager->getProp(block_h->Name);
-			pixel_size->Text = "" + mediaManager->getProp(pixel_size->Name);
-			fps->Text = "" + mediaManager->getProp(fps->Name);
-		}
+			 void update() {
+				 pixel_w->Text = "" + mediaManager->getProp(pixel_w->Name);
+				 pixel_h->Text = "" + mediaManager->getProp(pixel_h->Name);
+				 block_w->Text = "" + mediaManager->getProp(block_w->Name);
+				 block_h->Text = "" + mediaManager->getProp(block_h->Name);
+				 pixel_size->Text = "" + mediaManager->getProp(pixel_size->Name);
+				 fps->Text = "" + mediaManager->getProp(fps->Name);
+			 }
 
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
 	private: System::Windows::Forms::Button^  coose_file;
@@ -132,6 +133,7 @@ namespace Vid2Mc {
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->video_name = (gcnew System::Windows::Forms::TextBox());
+			this->infoPanel = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bg_color))->BeginInit();
 			this->SuspendLayout();
@@ -147,7 +149,7 @@ namespace Vid2Mc {
 			// 
 			// coose_file
 			// 
-			this->coose_file->Location = System::Drawing::Point(269, 50);
+			this->coose_file->Location = System::Drawing::Point(266, 81);
 			this->coose_file->Name = L"coose_file";
 			this->coose_file->Size = System::Drawing::Size(75, 23);
 			this->coose_file->TabIndex = 0;
@@ -197,7 +199,7 @@ namespace Vid2Mc {
 			// 
 			this->goButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->goButton->Location = System::Drawing::Point(177, 113);
+			this->goButton->Location = System::Drawing::Point(174, 144);
 			this->goButton->Name = L"goButton";
 			this->goButton->Size = System::Drawing::Size(167, 48);
 			this->goButton->TabIndex = 6;
@@ -207,7 +209,7 @@ namespace Vid2Mc {
 			// 
 			// file_output
 			// 
-			this->file_output->Location = System::Drawing::Point(12, 52);
+			this->file_output->Location = System::Drawing::Point(9, 83);
 			this->file_output->Name = L"file_output";
 			this->file_output->ReadOnly = true;
 			this->file_output->Size = System::Drawing::Size(251, 20);
@@ -216,7 +218,7 @@ namespace Vid2Mc {
 			// 
 			// progressBar1
 			// 
-			this->progressBar1->Location = System::Drawing::Point(12, 13);
+			this->progressBar1->Location = System::Drawing::Point(9, 44);
 			this->progressBar1->Name = L"progressBar1";
 			this->progressBar1->Size = System::Drawing::Size(332, 23);
 			this->progressBar1->TabIndex = 7;
@@ -236,7 +238,7 @@ namespace Vid2Mc {
 			this->panel1->Controls->Add(this->label1);
 			this->panel1->Controls->Add(this->pixel_w);
 			this->panel1->Controls->Add(this->label2);
-			this->panel1->Location = System::Drawing::Point(12, 113);
+			this->panel1->Location = System::Drawing::Point(9, 144);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(159, 137);
 			this->panel1->TabIndex = 8;
@@ -328,7 +330,7 @@ namespace Vid2Mc {
 			// bg_color
 			// 
 			this->bg_color->BackColor = System::Drawing::Color::Black;
-			this->bg_color->Location = System::Drawing::Point(279, 167);
+			this->bg_color->Location = System::Drawing::Point(276, 198);
 			this->bg_color->Name = L"bg_color";
 			this->bg_color->Size = System::Drawing::Size(62, 17);
 			this->bg_color->TabIndex = 9;
@@ -338,7 +340,7 @@ namespace Vid2Mc {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(178, 168);
+			this->label7->Location = System::Drawing::Point(175, 199);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(95, 13);
 			this->label7->TabIndex = 10;
@@ -347,7 +349,7 @@ namespace Vid2Mc {
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(9, 84);
+			this->label9->Location = System::Drawing::Point(6, 115);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(38, 13);
 			this->label9->TabIndex = 11;
@@ -355,17 +357,31 @@ namespace Vid2Mc {
 			// 
 			// video_name
 			// 
-			this->video_name->Location = System::Drawing::Point(53, 81);
+			this->video_name->Location = System::Drawing::Point(50, 112);
 			this->video_name->Name = L"video_name";
 			this->video_name->Size = System::Drawing::Size(210, 20);
 			this->video_name->TabIndex = 12;
 			this->video_name->Text = L"Video Name";
+			// 
+			// infoPanel
+			// 
+			this->infoPanel->AutoSize = true;
+			this->infoPanel->BackColor = System::Drawing::SystemColors::ControlLight;
+			this->infoPanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->infoPanel->ForeColor = System::Drawing::Color::Black;
+			this->infoPanel->Location = System::Drawing::Point(9, 9);
+			this->infoPanel->Name = L"infoPanel";
+			this->infoPanel->Size = System::Drawing::Size(36, 20);
+			this->infoPanel->TabIndex = 13;
+			this->infoPanel->Text = L"Info";
 			// 
 			// Options
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(353, 327);
+			this->Controls->Add(this->infoPanel);
 			this->Controls->Add(this->video_name);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label7);
@@ -390,7 +406,8 @@ namespace Vid2Mc {
 		file_output->Text = openFileDialog1->FileName;
 		fileChosen = true;
 		panel1->Visible = true;
-		mediaManager->openFile(openFileDialog1->FileName);
+		bool success = mediaManager->openFile(openFileDialog1->FileName);
+		this->infoPanel->Text = "Opening File: " + (success ? "success" : "failed");
 		update();
 	}
 	private: System::Void chooseFileClicked(System::Object^  sender, System::EventArgs^  e) {
@@ -404,6 +421,7 @@ namespace Vid2Mc {
 	}
 	private: System::Void openColorPicker(System::Object^  sender, System::EventArgs^  e) {
 		colorDialog1->ShowDialog();
+		bg_color->BackColor = colorDialog1->Color;
 	}
 
 	private: System::Void reset(System::Object^  sender, System::EventArgs^  e) {
@@ -423,5 +441,7 @@ namespace Vid2Mc {
 			textBox->Text = "" + mediaManager->getProp(textBox->Name);
 		}
 	}
-};
+	private: System::Void infoPanel_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+	};
 }
