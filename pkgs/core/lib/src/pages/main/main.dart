@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:bird_flutter/bird_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:vid2minecraft_core/vid2minecraft_core.dart';
@@ -94,14 +97,40 @@ Widget _mainWidget() {
         verticalSpace(28.0),
 
         center() > RaisedButton(
+          child: const Text("Test"),
+          onPressed: () {
+            Process.start("java", [
+              "-jar",
+              "/Users/valauskasmodestas/Desktop/jvid2cmd-0.1-Test.jar",
+              "test",
+            ]).catchError(print).then((a) {
+              a.stdout.map(utf8.decode).listen((String data) {
+                print("Data: " + data.toString());
+              }, onError: (dynamic err) {
+                print("Error: " + err.toString());
+              }, onDone: () {
+                print("Done");
+              });
+              a.stderr.map(utf8.decode).listen((data) {
+                print("ERR: Data: " + data.toString());
+              }, onError: (dynamic err) {
+                print("ERR: Error: " + err.toString());
+              }, onDone: () {
+                print("ERR: Done");
+              });
+              print(a);
+            });
+          },
+        ),
+        verticalSpace(28.0),
+
+        center() > RaisedButton(
           child: const Text("Let's go"),
           onPressed: bloc.toggleLoading,
         ),
         verticalSpace(28.0),
         $$ >> (context) {
           final isLoading = bloc.isLoading.hook;
-
-          print(isLoading);
           if (isLoading) {
             return center()
             & width(150.0)
